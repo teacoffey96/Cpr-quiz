@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Joe Coffey's School for PALS - CPR Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fefefe;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      background: #002855;
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    h1 {
+      margin: 0;
+    }
+    .question {
+      margin: 30px 0;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .answers button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .answers button:hover {
+      background: #f0f0f0;
+    }
+    .correct {
+      background-color: #c8f7c5;
+    }
+    .incorrect {
+      background-color: #fbc5c5;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dr. Joe Coffey's School for PALS</h1>
+    <h2>Interactive CPR Quiz</h2>
+  </header>
+
+  <div class="question" id="q1">
+    <h3>What is the correct chest compression depth for a child during CPR?</h3>
+    <div class="answers">
+      <button onclick="checkAnswer(this, false)">A. At least 1 inch (2.5 cm)</button>
+      <button onclick="checkAnswer(this, true)">B. About 1/3 the depth of the chest (~2 inches or 5 cm)</button>
+      <button onclick="checkAnswer(this, false)">C. 4 cm</button>
+      <button onclick="checkAnswer(this, false)">D. As deep as possible</button>
+    </div>
+    <div class="feedback" id="feedback1"></div>
+  </div>
+
+  <div class="question" id="q2">
+    <h3>What does a sudden spike in EtCO₂ on the capnography waveform suggest?</h3>
+    <div class="answers">
+      <button onclick="checkAnswer(this, false)">A. Poor chest compressions</button>
+      <button onclick="checkAnswer(this, false)">B. Airway obstruction</button>
+      <button onclick="checkAnswer(this, true)">C. Return of spontaneous circulation (ROSC)</button>
+      <button onclick="checkAnswer(this, false)">D. Hyperventilation</button>
+    </div>
+    <div class="feedback" id="feedback2"></div>
+  </div>
+
+  <script>
+    function checkAnswer(button, isCorrect) {
+      const buttons = button.parentElement.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+      if (isCorrect) {
+        button.classList.add('correct');
+        button.parentElement.nextElementSibling.textContent = '✅ Correct!';
+      } else {
+        button.classList.add('incorrect');
+        button.parentElement.nextElementSibling.textContent = '❌ Incorrect. Try reviewing this topic again!';
+      }
+    }
+  </script>
+</body>
+</html>
